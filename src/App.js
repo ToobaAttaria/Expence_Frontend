@@ -1,6 +1,5 @@
-
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SideBar from './COMPONENTS/sidebar';
 import Cards from './COMPONENTS/cards';
 import Transaction from './COMPONENTS/transactios';
@@ -9,32 +8,15 @@ function App() {
 
   const [window, setWindow] = useState(null);
   const [showCategory, setShowCategory] = useState(["Food", "Transport", "Entertainment"]);
-  const [formData, setFormData] = useState([
-    {
-      category: "Food",
-      description: "Lunch at a restaurant",
-      date: new Date().toLocaleDateString("en-GB").replace(/\//g, "-"), 
-      amount: 120,
-    },
 
-    {
-      category: "Transport",
-      description: "Bus fare",
-      date: "07-05-2025",
-      amount: 50,
-    },
+  const [formData, setFormData] = useState([]);
 
-    {
-      category: "Shopping",
-      description: "Bought a new jacket",
-      date: "10-06-2025",
-      amount: 300,
-    }
- 
-]);
-
-
-
+  useEffect(() => {
+    fetch("https://expencebackend-production.up.railway.app/expenses")
+      .then(res => res.json())
+      .then(data => setFormData(data))
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <>
