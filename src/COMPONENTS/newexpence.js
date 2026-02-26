@@ -35,7 +35,7 @@ function NewExpense({ heading, setWindow, showCategory, formData, setFormData, s
     try {
       if (selectedTransaction) {
         // Update backend
-        await fetch(`http://127.0.0.1:8000/expenses/${selectedTransaction.id}`, {
+        await fetch(`https://expencebackend-production.up.railway.app/expenses/${selectedTransaction.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(expenseData)
@@ -45,7 +45,7 @@ function NewExpense({ heading, setWindow, showCategory, formData, setFormData, s
         refreshExpenses();
       } else {
         // Add new
-        const response = await fetch("http://127.0.0.1:8000/expenses", {
+        const response = await fetch("https://expencebackend-production.up.railway.app/expenses", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(expenseData)

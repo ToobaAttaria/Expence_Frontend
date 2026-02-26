@@ -11,7 +11,7 @@ function ViewExpense({ setWindow, setSelectedTransaction }) {
     // Fetch expenses from backend
     const fetchExpenses = async () => {
         try {
-            const res = await fetch("http://127.0.0.1:8000/expenses");
+            const res = await fetch("https://expencebackend-production.up.railway.app");
             const data = await res.json();
             setExpenses(data);
             setLoading(false);
@@ -28,7 +28,7 @@ function ViewExpense({ setWindow, setSelectedTransaction }) {
     // Delete expense
     const deleteExpense = async (id) => {
         try {
-            await fetch(`http://127.0.0.1:8000/expenses/${id}`, { method: "DELETE" });
+            await fetch(`https://expencebackend-production.up.railway.app/${id}`, { method: "DELETE" });
             fetchExpenses();
         } catch (error) {
             console.error("Error deleting:", error);

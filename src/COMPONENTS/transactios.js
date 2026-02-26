@@ -9,7 +9,7 @@ export default function Transaction({ showCategory, formData, setFormData }) {
   // Fetch all expenses from backend
   const fetchExpenses = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/expenses");
+      const response = await fetch("https://expencebackend-production.up.railway.app/expenses");
       const data = await response.json();
       setFormData(data);
     } catch (error) {
@@ -32,7 +32,7 @@ export default function Transaction({ showCategory, formData, setFormData }) {
   async function DelBtn(index) {
     const id = formData[index].id;
     try {
-      await fetch(`http://127.0.0.1:8000/expenses/${id}`, { method: "DELETE" });
+      await fetch(`https://expencebackend-production.up.railway.app/expenses/${id}`, { method: "DELETE" });
       fetchExpenses(); // Refresh after delete
     } catch (error) {
       console.error("Error deleting expense:", error);

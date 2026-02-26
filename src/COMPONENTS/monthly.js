@@ -133,7 +133,7 @@ function Monthly({ heading, setWindow }) {
   useEffect(() => {
     async function fetchExpenses() {
       try {
-        const res = await fetch("http://127.0.0.1:8000/expenses");
+        const res = await fetch("https://expencebackend-production.up.railway.app");
         const data = await res.json();
 
         const filtered = data.filter(item => {
